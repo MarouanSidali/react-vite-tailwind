@@ -8,7 +8,6 @@ function App() {
     <>
       <NavbarWithDropdown />
       <SingnIn />
-      <Button>Click me</Button>
     </>
   );
 }
