@@ -6,7 +6,7 @@ export default function NavbarWithDropdown() {
   return (
     <>
       <Navbar fluid rounded>
-        <Navbar.Brand href="https://flowbite-react.com">
+        <Navbar.Brand>
           <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
              React
           </span>

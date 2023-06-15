@@ -1,6 +1,18 @@
 import React from "react";
+import axios from "axios";
+import { useState } from "react";
 
 const SingnIn = () => {
+  const [quote, setQuote] = useState("");
+  const getQuote = () => {
+    axios
+      .get("https://type.fit/api/quotes")
+      .then((res) => {
+        let x = Math.random() * 100;
+        setQuote(res.data[Math.floor(x)].text);
+      })
+      .catch((err) => console.error(err));
+  };
   return (
     <>
       <div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
@@ -63,10 +75,17 @@ const SingnIn = () => {
             <div>
               <button
                 type="submit"
-                class="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
               >
                 Sign in
               </button>
+              <button
+                className="mt-6 flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                onClick={getQuote}
+              >
+                Get a Quote
+              </button>
+              <p className="mt-6">{quote}</p>
             </div>
           </form>
         </div>
